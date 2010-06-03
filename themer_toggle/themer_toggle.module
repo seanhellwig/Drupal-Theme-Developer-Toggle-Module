@@ -18,7 +18,6 @@
 function themer_toggle_menu() {
 	$items = array();
 	$items['devel/devel_themer'] = array(
-		'description' => 'The description of the menu item. It is used as title attribute and on the administration overview page.',
 		'page callback' => 'toggle_devel_themer',
 		'type' => MENU_CALLBACK,
 		'access callback' => array('themer_toggle_user_access'),
