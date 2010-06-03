@@ -5,6 +5,12 @@ Drupal 6.x (http://drupal.org/project/drupal)
 Devel (tested with 6.x-1.20) (http://drupal.org/project/devel)
 Theme Developer (tested with 6.x-1.x-dev) (http://drupal.org/project/devel_themer)
 
+
+Installation:
+
+Copy the directory 'themer_toggle' into your drupal modules directory ('/sites/all/module', or '/sites/default/modules/).
+Install like any other module via the module install page (http://example.com/admin/build/modules)
+
 Description:
 
 This Drupal 6.x module allows you to toggle the state of the Theme Developer Module via a URL.  This was built in to Devel when Theme Developer was packaged with it.
