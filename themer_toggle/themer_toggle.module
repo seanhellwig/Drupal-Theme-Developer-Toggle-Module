@@ -1,0 +1,55 @@
+<?php
+// $Id$
+
+/**
+ * @file
+ * Enable and Disable the Theme Developer module.
+ *
+ * Adds the ability to enable and disable via URL. Same feature existed 
+ * This existed when devel and theme developer were packaged together.
+ *
+ * @author
+ * Sean Hellwig
+ */
+
+/**
+ * Implementation of hook_menu().
+ */
+function themer_toggle_menu() {
+	$items = array();
+	$items['devel/devel_themer'] = array(
+		'description' => 'The description of the menu item. It is used as title attribute and on the administration overview page.',
+		'page callback' => 'toggle_devel_themer',
+		'type' => MENU_CALLBACK,
+		'access callback' => array('themer_toggle_user_access'),
+	);
+	
+	return $items;
+}
+
+function toggle_devel_themer($destination = '/'){
+	//check current status of devel_themer module
+	$curr_status_sql = "SELECT status FROM {system} WHERE name = 'devel_themer'";
+	$result = db_result(db_query($curr_status_sql));
+	switch ($result) {
+		case 0:
+			//devel_themer is disabled, enable it
+			module_enable(array('devel_themer'));
+			break;
+		case 1:
+			//devel_themer is enabled, disable it
+			module_disable(array('devel_themer'));
+			break;
+	}
+	
+	module_rebuild_cache();
+	
+	drupal_goto($destination);
+}
+
+function themer_toggle_user_access($account = NULL) {
+  // Users with access to devel information from the devel module should
+  // automatically get access to the theme information as well.
+  return (user_access('access devel information', $account) || user_access('access devel theme information', $account));
+}
+

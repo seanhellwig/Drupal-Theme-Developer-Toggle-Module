@@ -1,0 +1,21 @@
+Themer Toggle Module
+
+Requirements:
+Drupal 6.x (http://drupal.org/project/drupal)
+Devel (tested with 6.x-1.20) (http://drupal.org/project/devel)
+Theme Developer (tested with 6.x-1.x-dev) (http://drupal.org/project/devel_themer)
+
+Description:
+
+This Drupal 6.x module allows you to toggle the state of the Theme Developer Module via a URL.  This was built in to Devel when Theme Developer was packaged with it.
+
+How I use it:
+
+I created a handy bookmarklet:
+
+javascript:var%20devel='/devel/devel_themer';%20var%20base=location.protocol+'//'+location.host;if(location.pathname.substr(1)){var%20extras%20=%20'?destination='+location.pathname.substr(1)}else{var%20extras=''};location=base+devel+extras;
+
+Hope somebody finds this useful
+
+
+
