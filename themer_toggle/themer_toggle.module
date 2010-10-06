@@ -20,7 +20,7 @@ function themer_toggle_menu() {
 	$items['devel/devel_themer'] = array(
 		'page callback' => 'toggle_devel_themer',
 		'type' => MENU_CALLBACK,
-		'access callback' => array('themer_toggle_user_access'),
+		'access callback' => 'themer_toggle_user_access',
 	);
 	
 	return $items;
